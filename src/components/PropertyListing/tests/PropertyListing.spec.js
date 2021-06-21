@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import PropertyListing from '../PropertyListing';
 
 describe('PropertyListing', () => {
@@ -9,8 +9,14 @@ describe('PropertyListing', () => {
         expect(wrapper.find('.PropertyListing')).toHaveLength(1);
     });
 
-    it('should render five property cards', () => {
-        const wrapper = shallow(<PropertyListing/>);
-        expect(wrapper.find('PropertyCard')).toHaveLength(5);
+    it('should render hundred property cards', async() => {
+        const wrapper = mount(<PropertyListing/>);
+        await (async () => {
+            await Promise.resolve(wrapper);
+            await new Promise(resolve => setImmediate(resolve));
+            wrapper.update();
+            expect(wrapper.find('PropertyCard')).toHaveLength(100);
+        });
     });
 });
+
