@@ -5,8 +5,8 @@ import PropertyListing from '../PropertyListing';
 describe('PropertyListing', () => {
 
     it('should render without crashing', () => {
-        const wrapper = shallow(<PropertyListing/>);
-        expect(wrapper.find('.PropertyListing')).toHaveLength(1);
+        const wrapper = mount(<PropertyListing/>);
+        expect(wrapper.find('PropertyListing')).toHaveLength(1);
     });
 
     it('should render hundred property cards', async() => {
